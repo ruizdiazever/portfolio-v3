@@ -1,6 +1,19 @@
 <script>
   import svelteLogo from './assets/svelte.svg'
   import Counter from './lib/Counter.svelte'
+  import axios from "axios";
+
+  let name = "NONAME"
+
+  async function getData() {
+      const path = 'http://127.0.0.1:8000/about'
+      let headers = {headers: {'Content-Type': 'application/json'}}
+      await axios.get(path, headers).then((response) => {
+        name = response.data.name
+      })
+    }
+
+  getData()
 </script>
 
 <main>
@@ -23,7 +36,7 @@
   </p>
 
   <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
+    Click on the Vite and Svelte logos to learn more {@html name}
   </p>
 </main>
 
