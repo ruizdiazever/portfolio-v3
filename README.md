@@ -1,6 +1,13 @@
-# Portfolio powered by FastAPI, Svelte, GraphQL and PostgreSQL
+# Portfolio v3
 
 Personal project made for didactic purposes
+
+## Powered by
+
+- [FastAPI](https://fastapi.tiangolo.com/)
+- [Svelte](https://svelte.dev/)
+- [GraphQL](https://graphql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Commands
 
@@ -16,7 +23,6 @@ sh run_fe.sh               # Run frontend
 - [GraphQL](http://localhost:8000/graphql)
 - [FastAPI docs](https://fastapi.tiangolo.com/)
 - [Strawberry](https://strawberry.rocks/docs/integrations/fastapi)
-
 
 ## Endpoints
 
