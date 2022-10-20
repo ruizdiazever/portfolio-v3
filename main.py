@@ -1,9 +1,13 @@
-from strawberry.asgi import GraphQL
-import strawberry
+# FASTAPI
 import uvicorn
 from fastapi import (Depends, FastAPI, HTTPException, Request)
 from fastapi.middleware.cors import CORSMiddleware
-from src.blog import Query
+# THIRD PACKAGES
+from strawberry.asgi import GraphQL
+import strawberry
+# PROJECT
+from src.views.blog import Query
+from src.utils.dbconn import get_conn_async, get_data_db, get_conn_async_v2
 
 
 # APP
@@ -24,6 +28,30 @@ async def root():
     return {"message": "Hello World from FastAPI, Svelte, GraphQL and RedisDB"}
 
 
+# TEST DB
+@app.get("/db")
+def db_test():
+    query = 'select name from berli.prod."USERS"'
+    data = get_data_db(query)
+    return {"data": data}
+
+
+# TEST DB ASYNC
+@app.get("/db/async")
+async def db_async_test():
+    query = 'select name from berli.prod."USERS"'
+    await get_conn_async(query)
+    return {"message": "Test DB Success, see terminal!"}
+
+
+# TEST 2 DB ASYNC
+@app.get("/db/async/v2")
+async def db_async_v2_test():
+    query = 'select name from berli.prod."USERS"'
+    data = await get_conn_async_v2(query)
+    return {"message": data}
+
+
 # CORS
 app = CORSMiddleware(
     app=app,
@@ -33,6 +61,7 @@ app = CORSMiddleware(
     allow_headers=["*"],
 )
 
+
 # INIT
 if __name__ == '__main__':
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=5005)
