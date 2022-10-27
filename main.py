@@ -29,15 +29,19 @@ async def root():
 
 
 # TEST DB
-@app.get("/db")
+@app.get("/api/v1/db")
 def db_test():
     query = 'select name from berli.prod."USERS"'
     data = get_data_db(query)
     return {"data": data}
 
+@app.get("/api/v1/about")
+async def about():
+    return {"name": "Ever Ruiz Diaz"}
+
 
 # TEST DB ASYNC
-@app.get("/db/async")
+@app.get("/api/v1/db/async")
 async def db_async_test():
     query = 'select name from berli.prod."USERS"'
     await get_conn_async(query)
@@ -45,7 +49,7 @@ async def db_async_test():
 
 
 # TEST 2 DB ASYNC
-@app.get("/db/async/v2")
+@app.get("/api/v1/db/async/v2")
 async def db_async_v2_test():
     query = 'select name from berli.prod."USERS"'
     data = await get_conn_async_v2(query)

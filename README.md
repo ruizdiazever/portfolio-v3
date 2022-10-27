@@ -2,14 +2,14 @@
 
 Personal project made for didactic purposes
 
-## Powered by
+## Powered by ⚡️
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Svelte](https://svelte.dev/)
 - [GraphQL](https://graphql.org/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [PostgreSQL 14](https://www.postgresql.org/)
 
-## Commands
+## Commands 👾
 
 ```bash
 uvicorn main:app --reload  # Run server
@@ -17,14 +17,17 @@ sh run_be.sh               # Run backend
 sh run_fe.sh               # Run frontend
 ```
 
-## Information
+## Docs 📄
 
-- [API Docs](http://localhost:8000/docs)
-- [GraphQL](http://localhost:8000/graphql)
-- [FastAPI docs](https://fastapi.tiangolo.com/)
+- [API](http://localhost:8000/docs)
+- [GraphQL tool](http://localhost:8000/graphql)
+- [Svelte](https://kit.svelte.dev/docs/introduction)
+- [Svelte Routing](https://github.com/EmilTholin/svelte-routing#readme)
+- [FastAPI](https://fastapi.tiangolo.com/)
 - [Strawberry](https://strawberry.rocks/docs/integrations/fastapi)
+- [TailwindCSS](https://tailwindcss.com/docs/installation)
 
-## Endpoints
+## Endpoints 🌎
 
 Test connection and get data of PostgreSQL 14
 
