@@ -1,3 +1,3 @@
 #!/usr/bin/bash
-cd frontend && npm run dev
+cd frontend && npx vite
 cd ..

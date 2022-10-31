@@ -3,87 +3,133 @@
 @tailwind base;
 
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color-scheme: light dark;
+	font-synthesis: none;
+  prefers-color-scheme: dark;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
 a:hover {
-  color: #535bf2;
+	color: #85efac;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
 button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+	background-color: #85efac;
+	color: #1a1a1a;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer components {
+  body {
+    @apply dark:bg-[#1d1d1b] bg-white;
   }
-  a:hover {
-    color: #747bff;
+
+  h1, h2, h3 {
+    @apply text-slate-900 dark:text-white;
   }
-  button {
-    background-color: #f9f9f9;
+  p {
+    @apply text-slate-700 dark:text-gray-400;
+  }
+
+  /* MODAL */
+  .modal {
+    @apply dark:bg-[#1d1d1b] bg-emerald-50 rounded-lg px-6 pb-6;
+		position: absolute;
+		left: 50%;
+		top: 10%;
+		width: calc(100vw - 4em);
+		max-width: 32em;
+		max-height: calc(100vh - 4em);
+		transform: translate(-50%,-50%);
+	}
+
+  .modal-header {
+    @apply text-xl;
+  }
+
+  .modal-close {
+    @apply text-lg text-black flex justify-center rounded-full dark:bg-green-300 dark:hover:bg-green-200;
+  }
+
+  /* CARD */
+  .card {
+    @apply max-w-xs mt-10 rounded-[24px] mt-0 mx-auto mb-5;
+    @apply dark:bg-[#28292a] bg-emerald-50;
+  }
+
+  .card > div > p {
+    @apply dark:text-gray-400 text-slate-700;
+  }
+
+  /* BLOG */
+  .blog-li {
+    @apply dark:bg-[#28292a] bg-emerald-50;
+  }
+
+  .blog-li-span {
+    @apply dark:text-green-300 text-green-600;
+  }
+  .blog-li-span-2 {
+    @apply dark:text-gray-300 text-black;
+  }
+
+  /* HEADER */
+  .header-nav {
+    @apply flex-auto px-2 sm:px-4 py-2.5 rounded;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-button {
+    @apply inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden;
+  }
+
+  .header-button-menu {
+    @apply dark:bg-[#222f29] bg-emerald-100 inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden;
+  }
+
+  .header-div {
+    @apply container flex flex-wrap justify-between items-center mx-auto;
+  }
+
+  .header-ul {
+    @apply flex flex-col p-4 mt-4 rounded-lg md:flex-row md:space-x-8 rounded-lg;
+    @apply dark:bg-[#222f29] bg-emerald-100;
+  }
+
+  .header-li, .separator-header {
+    @apply dark:text-green-300 dark:hover:text-green-200;
+    @apply block py-2 pr-4 pl-3 text-green-900 rounded md:p-0;
+  }
+
+  /* SKILL */
+  .skill-btn {
+    @apply px-4 py-1 text-base rounded-full mb-2 text-slate-800 bg-emerald-100;
+    @apply dark:bg-[#222f29] dark:text-green-300;
+  }
+
+  /* ICON */
+  .icon-sgv {
+    @apply dark:text-gray-400 dark:hover:text-green-300;
+    @apply text-gray-900 hover:text-green-400;
+  }
+
+  /* FOOTER */
+  .footer-ever {
+    @apply dark:text-gray-400 text-gray-800;
+  }
+
+  .footer-name {
+    @apply dark:text-green-300 text-green-600 font-bold dark:text-base text-xl;
   }
 }
 
 @tailwind components;
-
 @tailwind utilities;
