@@ -3,15 +3,27 @@
     import renato from "$lib/images/renato.jpg";
     import pawel from "$lib/images/pawel.jpg";
     import { secret } from '$lib/js/store.js';
-    let name = "404";
 
-    async function getData() {
-        const path = "http://127.0.0.1:8000/about";
+    let blog = [];
+
+    const graphqlQuery = {
+        "operationName": "Blog",
+        "query": `query Blog { blog { title, date } }`,
+        "variables": {}
+    };
+
+    async function getBlog() {
+        const path = "http://127.0.0.1:8000/graphql";
         let headers = { headers: { "Content-Type": "application/json" } };
-        await axios.get(path, headers).then((response) => {
-            name = response.data.name;
-        });
+        try {
+            await axios.post(path, graphqlQuery, headers).then((response) => {
+                blog = response.data.data.blog;
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
     }
+    getBlog();
 </script>
 
 <main>
@@ -45,7 +57,7 @@
                 <img src={renato} class="card-img w-full rounded-[24px]" alt="Logo">
             </div>
             <div class="card-body py-6">
-                <a href="www.everdev.it"><h2 class="text-xl text-center">Curriculum</h2></a>
+                <a href="https://www.everdev.it" target="blank"><h2 class="text-xl text-center">Curriculum</h2></a>
                 <p class="mt-2 text-center">See or download my curriculum</p>
             </div>
         </div>
@@ -54,7 +66,7 @@
                 <img src={pawel} class="card-img w-full rounded-[24px]" alt="Logo">
             </div>
             <div class="card-body py-6">
-                <a href="www.everdev.it"><h2 class="text-xl text-center">Certifications</h2></a>
+                <a href="https://www.everdev.it" target="blank"><h2 class="text-xl text-center">Certifications</h2></a>
                 <p class="mt-2 text-center">Some of my certifications</p>
             </div>
         </div>
@@ -64,9 +76,9 @@
     <div class="mb-5 mt-10">
         <h2 class="text-2xl mb-5 text-center">Roadmap</h2>
         <ul>
-            <li class="blog-li pl-5 text-justify mx-auto max-w-2xl rounded-full py-2 mb-2"><span class="blog-li-span">29/10/22<span><span class="ml-5 blog-li-span-2">Today is Svelte day</span></li>
-            <li class="blog-li pl-5 text-justify mx-auto max-w-2xl rounded-full py-2 mb-2"><span class="blog-li-span">29/10/22<span><span class="ml-5 blog-li-span-2">Python y todas las droguitas</span></li>
-            <li class="blog-li pl-5 text-justify mx-auto max-w-2xl rounded-full py-2 mb-2"><span class="blog-li-span">29/10/22<span><span class="ml-5 blog-li-span-2">Today is Svelte day</span></li>
+            {#each blog as item}
+            <li class="blog-li"><code class="blog-li-span text-sm">{item.date}</code><span class="ml-5 blog-li-span-2">{item.title}</span></li>
+            {/each}
         </ul>
     </div>
 </main>

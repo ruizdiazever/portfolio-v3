@@ -1,6 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}'
+	],
+	
 	darkMode: 'class',
 
 	theme: {
@@ -11,7 +14,8 @@ const config = {
 		},
 	},
 
-	plugins: []
+	plugins: [
+	]
 };
 
 module.exports = config;

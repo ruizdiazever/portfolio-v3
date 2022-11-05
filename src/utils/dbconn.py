@@ -10,20 +10,18 @@ CONN_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABA
 async def get_conn_async(query=str):
     async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
         async with async_conn.cursor() as async_cursor:
-            await async_cursor.execute(query)
-            async for record in async_cursor:
-                print(record)
-
-
-async def get_conn_async_v2(query=str):
-    async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
-        async with async_conn.cursor() as async_cursor:
             records = await async_cursor.execute(query)
             column_names = list(map(lambda x: x.lower(), [
                 d[0] for d in records.description]))
             rows = list(await records.fetchall())
             output = [dict(zip(column_names, row)) for row in rows]
             return output
+
+async def insert_conn_async(query=str):
+    async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
+        async with async_conn.cursor() as async_cursor:
+            await async_cursor.execute(query)
+            return "QUERY SUCCESS"
 
 
 def get_conn():

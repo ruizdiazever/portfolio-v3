@@ -4,10 +4,11 @@ from fastapi import (Depends, FastAPI, HTTPException, Request)
 from fastapi.middleware.cors import CORSMiddleware
 # THIRD PACKAGES
 from strawberry.asgi import GraphQL
+from strawberry.schema.config import StrawberryConfig
 import strawberry
 # PROJECT
-from src.views.blog import Query
-from src.utils.dbconn import get_conn_async, get_data_db, get_conn_async_v2
+from src.graphql import Query, Mutation
+
 
 
 # APP
@@ -16,7 +17,11 @@ origins = ['*']
 
 
 # GRAPHQL
-schema = strawberry.Schema(query=Query)
+schema = strawberry.Schema(
+    query=Query, 
+    mutation=Mutation,
+    config=StrawberryConfig(auto_camel_case=True)
+)
 graphql_app = GraphQL(schema)
 app.add_route("/graphql", graphql_app)
 app.add_websocket_route("/graphql", graphql_app)
@@ -25,35 +30,7 @@ app.add_websocket_route("/graphql", graphql_app)
 # HOME
 @app.get("/")
 async def root():
-    return {"message": "Hello World from FastAPI, Svelte, GraphQL and RedisDB"}
-
-
-# TEST DB
-@app.get("/api/v1/db")
-def db_test():
-    query = 'select name from berli.prod."USERS"'
-    data = get_data_db(query)
-    return {"data": data}
-
-@app.get("/api/v1/about")
-async def about():
-    return {"name": "Ever Ruiz Diaz"}
-
-
-# TEST DB ASYNC
-@app.get("/api/v1/db/async")
-async def db_async_test():
-    query = 'select name from berli.prod."USERS"'
-    await get_conn_async(query)
-    return {"message": "Test DB Success, see terminal!"}
-
-
-# TEST 2 DB ASYNC
-@app.get("/api/v1/db/async/v2")
-async def db_async_v2_test():
-    query = 'select name from berli.prod."USERS"'
-    data = await get_conn_async_v2(query)
-    return {"message": data}
+    return {"message": "Hello World from my portfolio powered by FastAPI, Svelte, GraphQL, Tailwind CSS and PostgreSQL"}
 
 
 # CORS

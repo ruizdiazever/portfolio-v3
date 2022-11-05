@@ -1,8 +1,8 @@
 from datetime import datetime
-import strawberry
+from strawberry import type
 
 
-@strawberry.type
+@type
 class Certificate:
     title: str
     image: str
@@ -10,8 +10,5 @@ class Certificate:
     position: int
 
 
-@strawberry.type
-class Query:
-    @strawberry.field
-    def certificate(self) -> Certificate:
-        return Certificate(title="FastAPI", image="img/certificate.webp", position=1, url="Hello")
+def certificate(self) -> Certificate:
+    return Certificate(title="FastAPI", image="img/certificate.webp", position=1, url="Hello")

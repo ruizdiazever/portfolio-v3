@@ -1,10 +1,13 @@
 from datetime import datetime
-import strawberry
-from src.views.types import Curriculum
+from strawberry import type
+
+@type
+class Curriculum:
+    title: str
+    file: str
+    language: str
+    date: datetime
 
 
-@strawberry.type
-class Query:
-    @strawberry.field
-    def curriculum(self) -> Curriculum:
-        return Curriculum(title="FastAPI", file="", language="ES", date=datetime.now())
+def curriculum(self) -> Curriculum:
+    return Curriculum(title="FastAPI", file="", language="ES", date=datetime.now())

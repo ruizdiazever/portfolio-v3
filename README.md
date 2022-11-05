@@ -2,12 +2,15 @@
 
 Personal project made for didactic purposes
 
+![Alt text](src/files/page.png "Home")
+
 ## Powered by ⚡️
 
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Svelte](https://svelte.dev/)
 - [GraphQL](https://graphql.org/)
 - [PostgreSQL 14](https://www.postgresql.org/)
+- [TailwindCSS](https://tailwindcss.com/docs/installation)
 
 ## Commands 👾
 
