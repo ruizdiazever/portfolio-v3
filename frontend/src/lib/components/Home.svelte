@@ -2,9 +2,12 @@
     import axios from "axios";
     import renato from "$lib/images/renato.jpg";
     import pawel from "$lib/images/pawel.jpg";
+    import Loader from "$lib/components/Loader.svelte";
     import { secret } from '$lib/js/store.js';
 
     let blog = [];
+    let path = import.meta.env.VITE_API_ENPOINT
+    let showLoader = true
 
     const graphqlQuery = {
         "operationName": "Blog",
@@ -13,11 +16,11 @@
     };
 
     async function getBlog() {
-        const path = "http://127.0.0.1:8000/graphql";
         let headers = { headers: { "Content-Type": "application/json" } };
         try {
             await axios.post(path, graphqlQuery, headers).then((response) => {
                 blog = response.data.data.blog;
+                showLoader = false;
             });
         } catch (error) {
             console.log(error.message);
@@ -75,11 +78,15 @@
     <!-- BLOG -->
     <div class="mb-5 mt-10">
         <h2 class="text-2xl mb-5 text-center">Roadmap</h2>
-        <ul>
-            {#each blog as item}
-            <li class="blog-li"><code class="blog-li-span text-sm">{item.date}</code><span class="ml-5 blog-li-span-2">{item.title}</span></li>
-            {/each}
-        </ul>
+        {#if showLoader}
+            <Loader />
+        {:else}
+            <ul>
+                {#each blog as item}
+                <li class="blog-li"><code class="blog-li-span text-sm">{item.date}</code><span class="ml-5 blog-li-span-2">{item.title}</span></li>
+                {/each}
+            </ul>
+        {/if}
     </div>
 </main>
 

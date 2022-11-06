@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 
 # LOAD ENV
-dotenv_path = join(dirname(__file__), '../.env')
+dotenv_path = join(dirname(__file__), '../frontend/.env')
 load_dotenv(dotenv_path)
 
 
@@ -15,6 +15,7 @@ DB_SCHEMA = os.environ.get("DB_SCHEMA")
 DB_USER = os.environ.get("DB_USER")
 DB_PASSWORD = os.environ.get("DB_PASSWORD")
 DB_PORT = os.environ.get("DB_PORT")
+
 
 # INFO
 EMAIL = os.environ.get("EMAIL")
