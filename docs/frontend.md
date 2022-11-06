@@ -28,3 +28,10 @@ cd frontend
 npx vite build     # Build for production
 npx vite preview   # Locally preview production build
 ```
+
+Update npm packages
+
+```bash
+ncu --upgrade # Upgrade package in latest major version
+npm install   # Install
+```

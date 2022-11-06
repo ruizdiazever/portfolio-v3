@@ -15,9 +15,10 @@ Personal project made for didactic purposes
 ## Commands 👾
 
 ```bash
-uvicorn main:app --reload  # Run server
-sh run_be.sh               # Run backend
-sh run_fe.sh               # Run frontend
+uvicorn main:app --reload     # Run server
+sh run.sh                     # Run backend and frontend
+cd frontend && npx vite       # Run frontend in dev mode
+cd frontend && npm run build  # Build frontend in prod
 ```
 
 ## Docs 📄
@@ -29,11 +30,3 @@ sh run_fe.sh               # Run frontend
 - [FastAPI](https://fastapi.tiangolo.com/)
 - [Strawberry](https://strawberry.rocks/docs/integrations/fastapi)
 - [TailwindCSS](https://tailwindcss.com/docs/installation)
-
-## Endpoints 🌎
-
-Test connection and get data of PostgreSQL 14
-
-- [Test DB normal](http://127.0.0.1:8000/db)
-- [Test DB async](http://127.0.0.1:8000/db/async)
-- [Test DB async v2](http://127.0.0.1:8000/db/async/v2)

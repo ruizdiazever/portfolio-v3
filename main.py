@@ -2,6 +2,8 @@
 import uvicorn
 from fastapi import (Depends, FastAPI, HTTPException, Request)
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
 # THIRD PACKAGES
 from strawberry.asgi import GraphQL
 from strawberry.schema.config import StrawberryConfig
@@ -13,6 +15,7 @@ from src.graphql import Query, Mutation
 
 # APP
 app = FastAPI(debug=True)
+app.mount("/home", StaticFiles(directory="frontend/build", html=True), name="home")
 origins = ['*']
 
 
@@ -30,6 +33,11 @@ app.add_websocket_route("/graphql", graphql_app)
 # HOME
 @app.get("/")
 async def root():
+    return RedirectResponse(url='home')
+
+
+@app.get("/api/v1/welcome")
+async def welcome():
     return {"message": "Hello World from my portfolio powered by FastAPI, Svelte, GraphQL, Tailwind CSS and PostgreSQL"}
 
 

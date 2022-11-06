@@ -34,7 +34,6 @@ async def get_post(self, id: int) -> Blog:
 async def get_blog(self) -> List[Blog]:
     query = f'select * from portfolio.prod."BLOG"'
     blog = await get_conn_async(query)
-    print(blog)
 
     output = []
     for post in blog:
