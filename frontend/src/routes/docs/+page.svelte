@@ -6,9 +6,9 @@
 	<meta name="description" content="Documentation" />
 </svelte:head>
 
-<div>
+<div class="main-page">
 	<h1>Docs</h1>
-	<p class="text-center">To do</p>
+	<p class="subtitle-page">To do</p>
 </div>
 
 <style>

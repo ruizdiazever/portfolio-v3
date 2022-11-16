@@ -1,7 +1,5 @@
 <script>
     import axios from "axios";
-    import renato from "$lib/images/renato.jpg";
-    import pawel from "$lib/images/pawel.jpg";
     import Loader from "$lib/components/Loader.svelte";
     import { secret } from '$lib/js/store.js';
 
@@ -51,33 +49,16 @@
             <button class="skill-btn">Mkdocs</button>
             <button class="skill-btn">FastAPI</button>
         </div>
-    </div>
-
-    <!-- CARD -->
-    <div class="container max-w-2xl mx-auto lg:columns-2 my-5">
-        <div class="card">
-            <div class="card-header">
-                <img src={renato} class="card-img w-full rounded-[24px]" alt="Logo">
-            </div>
-            <div class="card-body py-6">
-                <a href="https://www.everdev.it" target="blank"><h2 class="text-xl text-center">Curriculum</h2></a>
-                <p class="mt-2 text-center">See or download my curriculum</p>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                <img src={pawel} class="card-img w-full rounded-[24px]" alt="Logo">
-            </div>
-            <div class="card-body py-6">
-                <a href="https://www.everdev.it" target="blank"><h2 class="text-xl text-center">Certifications</h2></a>
-                <p class="mt-2 text-center">Some of my certifications</p>
-            </div>
+        <hr class="divisor mx-auto">
+        <div class="cv-container mt-3">
+            <button class="cv-btn">Curriculum</button>
+            <button class="cv-btn">Certifications</button>
         </div>
     </div>
 
     <!-- BLOG -->
     <div class="mb-5 mt-10">
-        <h2 class="text-2xl mb-5 text-center">Roadmap</h2>
+        <h2 class="text-2xl mb-5 text-center">Blog</h2>
         {#if showLoader}
             <Loader />
         {:else}
@@ -98,11 +79,8 @@
         padding-top: 2.25rem;
         font-weight: 700;
     }
-    .card-img {
-        max-height: 120px;
-    }
 
-    .skill-container {
+    .skill-container, .cv-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -112,5 +90,22 @@
 
     .skill-btn {
         margin-inline: 2px;
+    }
+
+    .cv-btn {
+        margin-inline: 5px;
+        margin-bottom: 0.3rem;
+        padding: 0.2em 1em;
+        border-radius: 99999px;
+        font-weight: 700;
+        font-size: 20px;
+        font-family: "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Helvetica", "Cantarell", sans-serif;
+        line-height: 1.6;
+        letter-spacing: -0.03em;
+        word-spacing: -0.03em;
+    }
+
+    .divisor {
+        max-width: 200px;
     }
 </style>

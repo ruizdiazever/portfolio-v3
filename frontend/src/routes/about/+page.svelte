@@ -3,7 +3,7 @@
 	<meta name="description" content="About this app" />
 </svelte:head>
 
-<div>
-	<h1>About</h1>
-	<p class="text-center">To do</p>
+<div class="main-page">
+	<h1>Docs</h1>
+	<p class="subtitle-page">To do</p>
 </div>

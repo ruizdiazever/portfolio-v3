@@ -1,6 +1,7 @@
 # FASTAPI
 import uvicorn
 from fastapi import (Depends, FastAPI, HTTPException, Request)
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -10,7 +11,6 @@ from strawberry.schema.config import StrawberryConfig
 import strawberry
 # PROJECT
 from src.graphql import Query, Mutation
-
 
 
 # APP
