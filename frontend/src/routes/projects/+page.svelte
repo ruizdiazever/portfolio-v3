@@ -1,24 +1,28 @@
 <script>
 	import axios from "axios";
 	import Loader from "$lib/components/Loader.svelte";
-    import pawel from "$lib/images/pawel.jpg";
-	import renato from "$lib/images/renato.jpg";
-	import czerwinski from "$lib/images/czerwinski.jpg";
-	import ramos from "$lib/images/ramos.jpg";
+	import berli_cover from "$lib/images/berli.jpg";
+	import blog_cover from "$lib/images/blog.jpg";
+	import bot_cover from "$lib/images/bot.jpg";
+	import ecommerce_cover from "$lib/images/ecommerce.jpg";
+	import portfoliov3 from "$lib/images/portfolio_v3.jpg";
+	import portfoliov4 from "$lib/images/portfolio_v4.jpg";
 
 	let projects = [];
     let path = import.meta.env.VITE_API_ENPOINT
     let showLoader = true
 	let covers = {
-		"pawel": pawel, 
-		"renato": renato, 
-		"czerwinski": czerwinski, 
-		"ramos": ramos
+		"berli_cover": berli_cover, 
+		"blog_cover": blog_cover, 
+		"bot_cover": bot_cover, 
+		"ecommerce_cover": ecommerce_cover,
+		"portfoliov3_cover": portfoliov3,
+		"portfoliov4_cover": portfoliov4
 	}
 
     const graphqlQuery = {
         "operationName": "Project",
-        "query": `query Project { project { title, subtitle, url, cover, stack, image } }`,
+        "query": `query Project { project { title, subtitle, url, cover, stack, position } }`,
         "variables": {}
     };
 
@@ -27,12 +31,23 @@
         try {
             await axios.post(path, graphqlQuery, headers).then((response) => {
                 projects = response.data.data.project;
+				projects.sort(compareResults);
                 showLoader = false;
             });
         } catch (error) {
             console.log(error.message);
         }
     }
+
+	function compareResults(a, b) {
+		if (a.position < b.position) {
+			return 1;
+		}
+		if (a.position > b.position) {
+			return -1;
+		}
+		return 0;
+	}
 
     getProjects();
 </script>
@@ -55,7 +70,7 @@
 			{#each projects as project}
 				<div class="card">
 					<div class="card-header">
-						<img src={covers[project.image]} class="card-img w-full rounded-[24px]" alt="Logo">
+						<img src={covers[project.cover]} class="card-img rounded-[24px]" alt="Logo">
 					</div>
 					<div class="card-body py-6">
 						<a href="{project.url}" target="blank">
@@ -71,10 +86,11 @@
 </main>
 
 <style>
-    .card-img {
-        height: 120px;
+	.card-img {
 		width: 290px;
-    }
+		height: 120px;
+		object-fit: cover;
+	}
 
 	.stack {
 		max-width: 260px;

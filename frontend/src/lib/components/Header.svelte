@@ -19,11 +19,8 @@
 					<li class="header-li" aria-current={$page.url.pathname === '/projects' ? 'page' : undefined}>
 						<a href="/projects">Projects</a>
 					</li>
-					<li class="header-li" aria-current={$page.url.pathname === '/docs' ? 'page' : undefined}>
-						<a href="/docs">Docs</a>
-					</li>
 					<li class="header-li" aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-						<a href="/about">About</a>
+						<a href="/blog">Blog</a>
 					</li>
 					<span class="border-l border-gray-400 dark:border-slate-500"></span>
 					<li class="header-li">

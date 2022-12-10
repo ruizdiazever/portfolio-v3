@@ -1,4 +1,3 @@
-import asyncio
 import psycopg
 from src.settings import DB_DATABASE, DB_HOST, DB_PASSWORD, DB_PORT, DB_USER
 
@@ -16,6 +15,7 @@ async def get_conn_async(query=str):
             rows = list(await records.fetchall())
             output = [dict(zip(column_names, row)) for row in rows]
             return output
+
 
 async def insert_conn_async(query=str):
     async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
