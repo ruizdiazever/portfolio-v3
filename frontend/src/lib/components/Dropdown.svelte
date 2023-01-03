@@ -55,7 +55,7 @@
             <a href="/projects" class="header-dropdown-menu-url">Projects</a>
 
 
-            <a href="/blog" class="header-dropdown-menu-url">Blog</a>
+            <!-- <a href="/blog" class="header-dropdown-menu-url">Blog</a> -->
         </div>
         <div class="icon-footer">
             <a href="https://github.com/ruizdiazever" class="px-5 py-3 font-medium">

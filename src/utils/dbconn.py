@@ -6,7 +6,7 @@ CONN_INFO = f"dbname={DB_DATABASE} user={DB_USER} port={DB_PORT} host={DB_HOST} 
 CONN_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}?sslmode=require"
 
 
-async def get_conn_async(query=str):
+async def get_conn_async(query: str):
     async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
         async with async_conn.cursor() as async_cursor:
             records = await async_cursor.execute(query)
@@ -17,7 +17,7 @@ async def get_conn_async(query=str):
             return output
 
 
-async def insert_conn_async(query=str):
+async def insert_conn_async(query: str):
     async with await psycopg.AsyncConnection.connect(conninfo=CONN_INFO) as async_conn:
         async with async_conn.cursor() as async_cursor:
             await async_cursor.execute(query)
@@ -29,8 +29,10 @@ def get_conn():
     return connection
 
 
-def get_data_db(query=str):
-    connection = get_conn()
+connection = get_conn()
+
+
+def get_data_db(query: str):
     cursor = connection.cursor()
     cursor.execute(query)
     column_names = list(map(lambda x: x.lower(), [

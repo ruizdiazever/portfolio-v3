@@ -67,7 +67,7 @@ insert into portfolio.prod."PROJECTS" (
     'lib/images/renato.jpg', 
     'BotOS',
     'Cryptocurrency bot',
-    'Python, Raspberry Pi, Telegram API, Coinbase API, Bash'
+    'Python, Raspberry Pi, Telegram API, Coinbase API, Bash',
     'A bot that automatically sends you personality alerts on cryptocurrency prices',
     'https://github.com/ruizdiazever/BotOS',
     1,

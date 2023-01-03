@@ -2,5 +2,6 @@ fastapi
 uvicorn[standard]
 strawberry-graphql[fastapi]
 psycopg[binary,pool]
+gunicorn
 pylint
 ipython

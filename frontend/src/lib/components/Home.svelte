@@ -1,6 +1,7 @@
 <script>
     import { secret } from '$lib/js/store.js';
     let collapsed = true;
+    let pathCurriculum = import.meta.env.VITE_API_FILE
 </script>
 
 <main>
@@ -9,26 +10,26 @@
         <h1 class="title-name">Ever Ruiz Diaz</h1>
         <p class="mt-2 text-lg text-center">Software Developer Engineer</p>
         <div class="scale-75 skill-container">
-            <button class="skill-btn">Rust</button>
-            <button class="skill-btn">Python</button>
-            <button class="skill-btn">GNU/Linux</button>
-            <button class="skill-btn">Bash Scripting</button>
-            <button class="skill-btn">Git</button>
-            <button class="skill-btn">Docker</button>
-            <button class="skill-btn">PostgreSQL</button>
-            <button class="skill-btn">RedisDB</button>
-            <button class="skill-btn">MongoDB</button>
-            <button class="skill-btn">Svelte</button>
-            <button class="skill-btn">GraphQL</button>
-            <button class="skill-btn">Tailwind CSS</button>
-            <button class="skill-btn">Bootstrap</button>
-            <button class="skill-btn">Mkdocs</button>
-            <button class="skill-btn">FastAPI</button>
-            <button class="skill-btn">Axum</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.rust-lang.org/')}>Rust</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.python.org/')}>Python</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.linuxfoundation.org/')}>GNU/Linux</button>
+            <button class="skill-btn" on:click={() => window.open('https://en.wikipedia.org/wiki/Bash_(Unix_shell)')}>Bash Scripting</button>
+            <button class="skill-btn" on:click={() => window.open('https://git-scm.com/')}>Git</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.docker.com/')}>Docker</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.postgresql.org/')}>PostgreSQL</button>
+            <button class="skill-btn" on:click={() => window.open('https://redis.io/')}>RedisDB</button>
+            <button class="skill-btn" on:click={() => window.open('https://www.mongodb.com/')}>MongoDB</button>
+            <button class="skill-btn" on:click={() => window.open('https://svelte.dev/')}>Svelte</button>
+            <button class="skill-btn" on:click={() => window.open('https://graphql.org/')}>GraphQL</button>
+            <button class="skill-btn" on:click={() => window.open('https://tailwindcss.com/')}>Tailwind CSS</button>
+            <button class="skill-btn" on:click={() => window.open('https://getbootstrap.com/')}>Bootstrap</button>
+            <button class="skill-btn" on:click={() => window.open('https://squidfunk.github.io/mkdocs-material/')}>Mkdocs</button>
+            <button class="skill-btn" on:click={() => window.open('https://fastapi.tiangolo.com/')}>FastAPI</button>
+            <button class="skill-btn" on:click={() => window.open('https://tokio.rs/blog/2021-07-announcing-axum')}>Axum</button>
         </div>
         <hr class="divisor mx-auto">
         <div class="cv-container mt-3">
-            <button class="cv-btn">Curriculum</button>
+            <button class="cv-btn" on:click={() => window.open(pathCurriculum)}>Curriculum</button>
             <button class="cv-btn">Certifications</button>
         </div>
         <div>
@@ -43,8 +44,9 @@
             <p class="{!collapsed ? 'mb-2' : ''}">
                 {#if !collapsed}
                     I have worked in the aerospace industry and thus fulfilled one of my childhood dreams.
-                    My next goals are to develop innovative software with the power of Rust, my favorite programming language and 
-                    to collaborate more actively with it and Python to the world of open source software... another dream to achieve would be a photo with Linus Torvalds.
+                    My next goals are to develop innovative software with the power of Rust and 
+                    to collaborate more actively with it and Python to the world of open source software... 
+                    another dream to achieve would be a photo with Linus Torvalds.
                 {/if}
             </p>
             <span class="collapse-btn-container">

@@ -7,6 +7,7 @@
 	import ecommerce_cover from "$lib/images/ecommerce.jpg";
 	import portfoliov3 from "$lib/images/portfolio_v3.jpg";
 	import portfoliov4 from "$lib/images/portfolio_v4.jpg";
+	import scraper from "$lib/images/bolivia.jpg";
 
 	let projects = [];
     let path = import.meta.env.VITE_API_ENPOINT
@@ -17,7 +18,8 @@
 		"bot_cover": bot_cover, 
 		"ecommerce_cover": ecommerce_cover,
 		"portfoliov3_cover": portfoliov3,
-		"portfoliov4_cover": portfoliov4
+		"portfoliov4_cover": portfoliov4,
+		"scraper_cover": scraper
 	}
 
     const graphqlQuery = {
